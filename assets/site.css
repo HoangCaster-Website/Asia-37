@@ -455,12 +455,20 @@ address { font-style: normal; }
 .menu-section h2 sup { padding-left: 4px; font-size: 0.34em; color: var(--accent); }
 .menu-item {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-columns: clamp(46px, 8vw, 72px) minmax(0, 1fr) auto;
   align-items: baseline;
   gap: 4px 22px;
   padding-block: 15px;
   border-bottom: 1px solid var(--line);
 }
+.menu-item:not(.menu-item--illustrated)::before {
+  content: "";
+  align-self: center;
+  aspect-ratio: 540 / 411;
+  border-radius: 4px;
+  background: url("asia37-logo.webp") center / cover no-repeat;
+}
+.menu-item > div:first-child { overflow-wrap: anywhere; }
 .menu-item--illustrated {
   grid-template-areas: "photo item price";
   grid-template-columns: clamp(110px, 15vw, 175px) minmax(0, 1fr) auto;
@@ -592,6 +600,7 @@ address { font-style: normal; }
   .visit-heading { grid-column: auto; }
   .visit-hours { padding-block-start: 18px; border-top: 1px solid var(--night-line); }
   .menu-item { column-gap: 9px; }
+  .price-note { display: block; white-space: normal; }
   .menu-item--illustrated {
     grid-template-areas: "item price" "photo photo";
     grid-template-columns: minmax(0, 1fr) auto;
