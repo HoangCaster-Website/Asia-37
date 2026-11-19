@@ -420,9 +420,34 @@ address { font-style: normal; }
 .menu-layout {
   display: grid;
   grid-template-columns: minmax(150px, 0.78fr) minmax(0, 3fr);
-  gap: clamp(28px, 7vw, 115px);
+  gap: clamp(20px, 3vw, 36px) clamp(28px, 7vw, 115px);
   padding-block: clamp(36px, 6vw, 88px);
 }
+.menu-search {
+  grid-column: 1 / -1;
+  width: min(100%, 40rem);
+  padding: clamp(12px, 2vw, 22px);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+}
+.menu-search label { display: block; margin-block-end: 7px; font-weight: 600; }
+.menu-search-controls { display: flex; flex-wrap: wrap; gap: 8px; }
+.menu-search input, .menu-search button {
+  min-height: 46px;
+  padding: 9px 12px;
+  color: var(--ink);
+  border: 1px solid var(--line-strong);
+  border-radius: 6px;
+  font: inherit;
+}
+.menu-search input { flex: 1 1 10rem; min-width: 0; background: var(--paper); }
+.menu-search input::placeholder { color: var(--muted); opacity: 1; }
+.menu-search input::-webkit-search-cancel-button { display: none; }
+.menu-search button { background: var(--surface); font-weight: 600; cursor: pointer; }
+.menu-search button:hover { background: var(--paper); }
+.menu-search-status:not(:empty) { margin-block-start: 8px; color: var(--muted); font-size: 0.9rem; }
+.menu-content { min-width: 0; }
 .menu-jump {
   align-self: start;
   position: sticky;
@@ -573,6 +598,7 @@ address { font-style: normal; }
   .menu-hero-inner { display: grid; }
   .menu-hero-photo { width: min(100%, 420px); }
   .menu-layout { display: block; }
+  .menu-search { margin-block-end: 20px; }
   .menu-jump { position: static; max-height: none; overflow: visible; margin-bottom: 38px; }
   .menu-jump ul {
     display: flex;
