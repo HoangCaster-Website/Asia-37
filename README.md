@@ -14,8 +14,9 @@ Die Vorlage enthält Getränke, Desserts und Buffetangaben. Eine À-la-carte-Kar
 
 ## Bildnachweise
 
+- Sushi-Platte auf der Startseite – mit ImageGen erstellter Serviervorschlag
 - Sushi – [Leviosa Hou](https://unsplash.com/photos/two-pieces-of-sushi-on-a-black-plate-with-chopsticks-cWN5BXR_3bM)
 - Vietnamesischer Kaffee – [Tu Ngoc Minh](https://unsplash.com/photos/a-glass-with-a-drink-in-it-blQLC6CT36Q)
 - Mochi – [Sophie Lee-Tin-Yien](https://unsplash.com/photos/a-pink-mochi-and-a-bowl-of-food-9S5hxjmt-MU)
 
-Die Food-Fotos sind Serviervorschläge unter der [Unsplash-Lizenz](https://unsplash.com/license). Das Logo stammt aus der bereitgestellten Vorlage. Die Schriftlizenzen liegen in `assets/fonts/`.
+Die von Unsplash stammenden Food-Fotos sind Serviervorschläge unter der [Unsplash-Lizenz](https://unsplash.com/license). Das Logo stammt aus der bereitgestellten Vorlage. Die Schriftlizenzen liegen in `assets/fonts/`.
