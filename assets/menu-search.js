@@ -7,7 +7,8 @@ const menuContent = document.querySelector(".menu-content");
 const categoryRows = new Map(Array.from(menuCategories.querySelectorAll("a"), (link) => [
   link.hash, link.closest("li"),
 ]));
-const buffet = document.querySelector("#buffet");
+const buffetResult = document.querySelector(".menu-buffet-result");
+const buffetCategory = categoryRows.get("#buffet");
 
 function searchWords(value) {
   const normalized = value.toLowerCase().normalize("NFD")
@@ -17,7 +18,8 @@ function searchWords(value) {
   return normalized.match(/[\p{L}\p{N}]+/gu) ?? [];
 }
 
-const searchableSections = [...menuContent.querySelectorAll(".menu-section"), buffet].map((section) => {
+const buffetText = searchWords(buffetResult.querySelector("h3").textContent).join(" ");
+const searchableSections = Array.from(menuContent.querySelectorAll(".menu-section"), (section) => {
   const heading = section.querySelector("h2");
   const category = categoryRows.get(`#${section.id || heading.id}`);
   const title = searchWords(heading.textContent).join(" ");
@@ -25,15 +27,11 @@ const searchableSections = [...menuContent.querySelectorAll(".menu-section"), bu
     element,
     text: `${title} ${searchWords(element.firstElementChild.textContent).join(" ")}`,
   }));
-  if (section === buffet) {
-    items.push({ element: section, text: title });
-  }
   return { section, category, items };
 });
 
 function filterMenu() {
   const words = searchWords(menuQuery.value);
-  let matches = 0;
   let menuMatches = 0;
 
   for (const { section, category, items } of searchableSections) {
@@ -45,13 +43,16 @@ function filterMenu() {
     }
     section.hidden = sectionMatches === 0;
     if (category) category.hidden = section.hidden;
-    matches += sectionMatches;
-    if (section !== buffet) menuMatches += sectionMatches;
+    menuMatches += sectionMatches;
   }
 
+  const buffetMatches = words.length > 0 && words.every((word) => buffetText.includes(word));
+  buffetResult.hidden = !buffetMatches;
+  buffetCategory.hidden = words.length > 0 && !buffetMatches;
   menuCategories.hidden = !Array.from(categoryRows.values()).some((row) => !row.hidden);
   menuContent.hidden = menuMatches === 0;
   clearMenuSearch.hidden = menuQuery.value === "";
+  const matches = menuMatches + Number(buffetMatches);
   const resultMessage = matches
     ? `${matches} Treffer`
     : "Keine Treffer. Versuchen Sie einen anderen Suchbegriff.";
