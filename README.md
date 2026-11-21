@@ -8,13 +8,14 @@ Im Projektordner `python3 -m http.server 8000` ausführen und [localhost:8000](h
 
 ## Speisekarte pflegen
 
-Die Rubriken und Einträge stehen im Abschnitt `#speisekarte` von `index.html`. Die Suche liest die Namen, Nummern und Beschreibungen aus dem HTML. Adresse, Öffnungszeiten, Telefonnummern und Buffetpreise stammen aus der Word-Vorlage.
+Die Rubriken und Einträge stehen in `#menu-body` im Abschnitt `#karte` von `index.html`. Die Suche liest Namen, Nummern, Beschreibungen und Varianten aus dem HTML. Adresse, Öffnungszeiten, Telefonnummern und Buffetpreise stammen aus der Word-Vorlage. Die Formulare bereiten Bestellungen und Reservierungen für den Anruf im Restaurant vor.
 
 Getränke und Desserts stammen aus der Word-Vorlage. Die 38 herzhaften Gerichte, Varianten und die dazugehörige Legende stammen aus der gelieferten PDF-Speisekarte. Sushi ist als Wochenendbuffet aufgeführt. Für Nr. 702 (Remy Martin Cognac, 0,04 l) steht in der Word-Vorlage „550€“. Bis zur Klärung steht auf der Website „Preis bitte erfragen“.
 
 ## Bildnachweise
 
 - Sushi-Fotos auf der Startseite, im Buffet-Abschnitt und in der Galerie – bereitgestellte Restaurantfotos
+- Gestaltungsvorlage und Bilder für die Sushi-Kunde – [Mikado-Website](https://github.com/hoangcaster-999/MIKADO/tree/2720b09165949061c2a53d4e16b8da05dcb49b22)
 - Fotos der herzhaften Gerichte – bereitgestellte PDF-Speisekarte
 - Tom Yam Suppe und Mango Curry – Serviervorschläge aus der [Speisekarte von Mikado Aurich](https://mikado-aurich.de/)
 - Sushi-Platte (frühere Startseite) – mit ImageGen erstellter Serviervorschlag
