@@ -23,21 +23,24 @@ const searchableSections = Array.from(menuContent.querySelectorAll(".menu-sectio
   const heading = section.querySelector("h2");
   const category = categoryRows.get(`#${section.id || heading.id}`);
   const title = searchWords(heading.textContent).join(" ");
-  const items = Array.from(section.querySelectorAll(".menu-item"), (element) => ({
-    element,
-    text: `${title} ${searchWords(element.firstElementChild.textContent).join(" ")}`,
-  }));
+  const items = Array.from(section.querySelectorAll(".menu-item"), (element) => {
+    const number = searchWords(element.querySelector(".item-number")?.textContent ?? "")[0];
+    const variants = Array.from(element.querySelectorAll(".menu-variants dt"), (variant) => variant.textContent);
+    const descriptions = [element.firstElementChild.textContent, ...variants].join(" ");
+    return { element, number, text: `${title} ${searchWords(descriptions).join(" ")}` };
+  });
   return { section, category, items };
 });
 
 function filterMenu() {
   const words = searchWords(menuQuery.value);
+  const numberQuery = words.length === 1 && /^[a-z]*\d+$/.test(words[0]) ? words[0] : null;
   let menuMatches = 0;
 
   for (const { section, category, items } of searchableSections) {
     let sectionMatches = 0;
-    for (const { element, text } of items) {
-      const visible = words.every((word) => text.includes(word));
+    for (const { element, number, text } of items) {
+      const visible = numberQuery ? number === numberQuery : words.every((word) => text.includes(word));
       element.hidden = !visible;
       sectionMatches += Number(visible);
     }

@@ -545,6 +545,48 @@ address { font-style: normal; }
 .item-prices > span { white-space: nowrap; }
 .item-prices small { color: var(--muted); font-size: 0.74rem; font-weight: 400; }
 .price-note { display: block; font-size: 0.74rem; white-space: normal; }
+.menu-variants {
+  grid-column: 1 / -1;
+  min-width: 0;
+  margin-block-start: 6px;
+  border-top: 1px solid var(--line);
+}
+.menu-variants summary, .menu-legend summary {
+  min-height: 44px;
+  padding-block: 10px;
+  color: var(--accent);
+  cursor: pointer;
+  font-weight: 600;
+}
+.menu-variants dl { font-size: 0.9rem; }
+.menu-variants dl > div, .menu-legend dl > div {
+  display: grid;
+  gap: 4px 12px;
+  padding-block: 6px;
+  border-top: 1px solid var(--line);
+}
+.menu-variants dl > div { grid-template-columns: minmax(0, 1fr) auto; }
+.menu-variants dt { overflow-wrap: anywhere; }
+.menu-variants dt p { margin-block-start: 3px; }
+.menu-variants dd { white-space: nowrap; font-weight: 600; }
+.menu-variants sup { color: var(--accent); }
+.menu-legend {
+  margin-block-end: 14px;
+  padding-inline: 16px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--paper);
+}
+.menu-legend-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+  gap: 12px 20px;
+  padding-block: 4px 14px;
+  font-size: 0.9rem;
+}
+.menu-legend h3 { margin-block-end: 6px; }
+.menu-legend dl > div { grid-template-columns: 2ch 1fr; }
+.menu-legend dt { font-weight: 600; }
 .allergen-note { max-width: 62ch; padding: 16px 18px; border: 1px solid var(--line); color: var(--muted); font-size: 0.88rem; }
 .allergen-note a { display: inline-block; color: var(--accent); white-space: nowrap; }
 
