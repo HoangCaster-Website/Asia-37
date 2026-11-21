@@ -4,6 +4,8 @@ const clearMenuSearch = menuSearch.querySelector('button[type="reset"]');
 const searchStatus = menuSearch.querySelector(".menu-search-status");
 const menuCategories = document.querySelector(".menu-jump");
 const menuContent = document.querySelector(".menu-content");
+const menuTools = document.querySelector(".menu-tools");
+const menuLayout = menuTools.parentElement;
 const categoryRows = new Map(Array.from(menuCategories.querySelectorAll("a"), (link) => [
   link.hash, link.closest("li"),
 ]));
@@ -71,5 +73,25 @@ menuSearch.addEventListener("reset", (event) => {
   menuQuery.focus();
 });
 
+function updateMenuClearance() {
+  menuLayout.style.setProperty("--menu-tools-height", `${menuTools.offsetHeight}px`);
+}
+
+document.querySelector(".specialty-grid").addEventListener("click", (event) => {
+  const link = event.target.closest("a");
+  if (!link || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+  const item = document.getElementById(link.hash.slice(1));
+  if (!item?.hidden) return;
+  menuQuery.value = "";
+  filterMenu();
+  updateMenuClearance();
+  if (window.location.hash === link.hash) item.scrollIntoView();
+});
+
 filterMenu();
 menuSearch.hidden = false;
+if ("ResizeObserver" in window) {
+  updateMenuClearance();
+  new ResizeObserver(updateMenuClearance).observe(menuTools);
+  menuLayout.classList.add("menu-layout--sticky");
+}

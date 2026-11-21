@@ -1,6 +1,6 @@
 const navigationButton = document.querySelector(".nav-toggle");
 const navigation = document.querySelector("#main-nav");
-const mobileNavigation = window.matchMedia("(max-width: 820px)");
+const mobileNavigation = window.matchMedia("(max-width: 940px)");
 
 function closeNavigation() {
   navigationButton.setAttribute("aria-expanded", "false");
